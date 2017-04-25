@@ -451,7 +451,7 @@ aside::-webkit-scrollbar {
     }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 720px) {
     .personnel-info {
         display: none;
     }
