@@ -434,7 +434,7 @@ aside::-webkit-scrollbar {
     margin: 18px;
 }
 
-h2 {
+.personnel-info h2 {
     font-size: 18px;
     color: white;
     text-transform: uppercase;
