@@ -68,7 +68,6 @@ a {
 .menu-top_right-list_search-wrapper {
     width: 206px;
     height: 42px;
-    padding: 0;
     border: solid #eee 1px;
     border-radius: 21px;
     position: relative;
@@ -130,7 +129,6 @@ a {
 }
 
 .personnel-info_about {
-
     display: flex;
     padding: 20px;
     align-items: center;
@@ -409,16 +407,32 @@ a {
 
 .personnel-info {
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
+
     top: 76px;
     left: 0;
     right: 290px;
     bottom: 0;
     width: 290px;
     background-color: #81a8ca;
+}
+
+aside {
+    overflow: scroll;
+}
+
+.personnel-info_activities {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    align-self: flex-start;
+    margin: 18px;
+}
+
+h2 {
+    font-size: 18px;
+    color: white;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width: 924px) {
