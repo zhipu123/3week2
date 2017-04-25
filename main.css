@@ -417,8 +417,13 @@ a {
 }
 
 aside {
-    overflow: scroll;
+    overflow: auto;
 }
+
+aside::-webkit-scrollbar {
+    display: none;
+}
+
 
 .personnel-info_activities {
     display: flex;
