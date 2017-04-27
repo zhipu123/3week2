@@ -8,13 +8,9 @@
     <link rel="stylesheet" href="fontIcons/icomoon/style.css">
     <link rel="stylesheet" href="main.css">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <style type="text/css">
-
-    </style>
-
-
+    <script src="App.js" defer></script>
 </head>
-<body style="background-color: #f2eee8">
+<body>
 <div id="app">
     <aside class="personnel-info">
 
@@ -54,74 +50,18 @@
             </li>
         </ul>
         <ul class="main_content_item-list" style="background-color: white">
-            <li>
+
+            <li v-for="post in posts">
                 <img src="resources/p0.jpg" class="main_content_item-img">
-                <div class="main_content_item-wrapper" data-refresh-limit="20">
+                <div class="main_content_item-wrapper" :data-refresh-limit="post.refreshLimit">
                     <span class="fa-refresh main_content_item_refres-mark"></span>
-                    <em class="main_content_item_name">Gerry Zhi</em>
-                    <span class="main_content_item_sitename">heren.com</span>
-                    <div class="main_content_item_content">Lorem ipsum dolor
-                        amet,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                    </div>
-                    <ul class="main_content_item_operations">
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-redo"></a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-star"></a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-refresh">
-                                <span class="main_content_item_operations-item-refresh-limit">20</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-more-horiz"></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li>
-                <img src="resources/p0.jpg" class="main_content_item-img">
-
-                <div class="main_content_item-wrapper">
-                    <span class="fa-refresh main_content_item_refres-mark"></span>
-                    <em class="main_content_item_name">Gerry Zhi</em>
-                    <span class="main_content_item_sitename">heren.com</span>
-                    <div class="main_content_item_content">Lorem ipsum dolor
-                        amet,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                    </div>
-                    <ul class="main_content_item_operations">
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-redo"></a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-star"></a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-refresh">
-                                <span class="main_content_item_operations-item-refresh-limit">20</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-more-horiz"></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-
-            <li>
-                <img src="resources/p0.jpg" class="main_content_item-img">
-
-                <div class="main_content_item-wrapper">
-                    <span class="fa-refresh main_content_item_refres-mark"></span>
-                    <em class="main_content_item_name">Gerry Zhi</em>
-                    <span class="main_content_item_sitename">heren.com</span>
+                    <em class="main_content_item_name">{{post.author}}</em>
+                    <span class="main_content_item_sitename">{{post.site}}</span>
                     <div class="main_content_item_content">
-                        <video width="100%" crossorigin="anonymous"
-                               src="https://images.apple.com/media/us/iphone-7/2017/e1d65fb1_eb51_43ca_a7df_87df984a2655/tv-spots/raconteur/iphone7-raconteur-cc-us-20170217_1280x720h.mp4"></video>
+                        {{post.content}}
+                        <video width="100%" v-if="post.videoSrc && post.videoSrc.length" v-for="src in post.videoSrc">
+                            <source :src="src.source" :type="src.type">
+                        </video>
                     </div>
                     <ul class="main_content_item_operations">
                         <li>
@@ -143,34 +83,6 @@
             </li>
 
 
-            <li>
-                <img src="resources/p0.jpg" class="main_content_item-img">
-
-                <div class="main_content_item-wrapper">
-                    <span class="fa-refresh main_content_item_refres-mark"></span>
-                    <em class="main_content_item_name">Gerry Zhi</em>
-                    <span class="main_content_item_sitename">heren.com</span>
-                    <div class="main_content_item_content">Lorem ipsum dolor
-                        amet,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                    </div>
-                    <ul class="main_content_item_operations">
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-redo"></a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-star"></a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-refresh">
-                                <span class="main_content_item_operations-item-refresh-limit">20</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="main_content_item_operations-item fa-more-horiz"></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
         </ul>
     </div>
     <aside class="hot-column">
@@ -187,8 +99,6 @@
 
         <section class="hot-column_recommended_section">
             <h2>who to follow<a href="">more</a></h2>
-
-
             <ul class="hot-column_recommended">
                 <li v-for="recommendedItem in recommended">
                     <img v-bind:src="recommendedItem.photo">
@@ -207,7 +117,6 @@
         </section>
     </aside>
     <header class="menu-top">
-
         <div class="menu-top_left-list">
             <a class="menu-top_start fa-quill" href=""></a>
             <ul class="menu-top_quick-access">
@@ -241,62 +150,6 @@
 
 </footer>
 </body>
-
-<script language="JavaScript">
-
-    var data = {
-        personnelInfo: {
-            photo: "resources/p0.jpg",
-            name: "Gerry Zhi",
-            intro: "Thoughtworker, Developer,xxxxxxxxxxxxxxxxxxx",
-            link: "www.keern.co",
-        },
-        visitors: [],
-        recentActivites: [
-            {type: "follow", class: "fa-plus", target: "Eddie", href: "#"},
-            {type: "reply to", class: "fa-redo", target: "Alexander", href: "#"},
-            {type: "reply to", class: "fa-refresh", target: "Eric Twitte", href: "#"},
-            {type: "reply to", class: "fa-refresh", target: "Eric Twitte", href: "#"},
-            {type: "favorited", class: "fa-star", target: "John Twitte", href: "#"},
-        ],
-        posts: [],
-        news: [
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-            {href: "#", title: "#Lorem ipsum dolor sit amet"},
-        ],
-        recommended: [
-            {name: "Gerry Zhi", brief: "Developer,Thoughtworker", photo: "resources/p1.jpg",},
-            {name: "Wei Jia", brief: "Developer,Thoughtworker", photo: "resources/p2.jpg",},
-            {name: "Z.K. Wang", brief: "Developer,Thoughtworker", photo: "resources/p3.jpg",},
-            {name: "Yuan LIU", brief: "Developer,Thoughtworker", photo: "resources/p4.jpg",},
-            {name: "Lei Dong", brief: "Developer,Thoughtworker", photo: "resources/p5.jpg",}
-        ],
-        summary: {
-            follower: 200,
-            "post": 200,
-            following: 200,
-            "photos/audios": 200,
-        },
-    };
-    for (var i = 0; i < 9; i++) {
-        var personId = Math.floor(Math.random() * 10)
-        data.visitors.push({photo: "resources/p" + personId + ".jpg", link: "#"});
-    }
-    var app = new Vue({
-        el: '#app',
-        data: data,
-    });
-
-
-</script>
 </html>
 
 

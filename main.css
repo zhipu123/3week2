@@ -272,6 +272,12 @@ a {
     display: none;
 }*/
 
+input[type=search]:focus, input[type=search]:hover, input[type=search] {
+    border: none;
+    outline: none;
+}
+
+
 .main_summary_item-name {
     text-transform: uppercase;
     color: #cccccc;
@@ -476,4 +482,8 @@ aside::-webkit-scrollbar {
     .menu-top_right-list_search-wrapper {
         display: none;
     }
+}
+
+body {
+    background-color: #f2eee8;
 }
